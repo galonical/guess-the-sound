@@ -2,6 +2,7 @@ import GalonicalTheme from "@/theme/GalonicalTheme";
 import { Layout, Menu, Breadcrumb } from "antd";
 import { Content, Footer } from "antd/es/layout/layout";
 import StickyHeader from "./page.styles"
+import RoleSelector from "@/components/RoleSelector";
 
 export default function Home() {
   const items = Array.from({ length: 3 }).map((_, index) => ({
@@ -36,7 +37,7 @@ export default function Home() {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <RoleSelector />
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
