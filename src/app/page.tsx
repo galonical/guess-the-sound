@@ -1,6 +1,6 @@
 import GalonicalTheme from "@/theme/GalonicalTheme";
 import { Layout, Menu, Breadcrumb } from "antd";
-import { Header, Content, Footer } from "antd/es/layout/layout";
+import { Content, Footer } from "antd/es/layout/layout";
 import StickyHeader from "./page.styles"
 
 export default function Home() {

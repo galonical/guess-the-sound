@@ -3,7 +3,7 @@ const GalonicalTheme = {
     colorPrimary: "rgb(145, 219, 182)",
     colorBgLayout: "#FFFCFC",
     colorBgContainer: "#FFFFFF",
-    borderRadiusLG: "8px"
+    borderRadiusLG: 8,
   },
   components: {
     Button: {
