@@ -1,6 +1,7 @@
 import GalonicalTheme from "@/theme/GalonicalTheme";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu, Breadcrumb } from "antd";
 import { Header, Content, Footer } from "antd/es/layout/layout";
+import StickyHeader from "./page.styles"
 
 export default function Home() {
   const items = Array.from({ length: 3 }).map((_, index) => ({
@@ -12,16 +13,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1,
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <StickyHeader>
         <div className="demo-logo" />
         <Menu
           theme="dark"
@@ -30,7 +22,7 @@ export default function Home() {
           items={items}
           style={{ flex: 1, minWidth: 0 }}
         />
-      </Header>
+      </StickyHeader>
       <Content style={{ padding: "0 48px" }}>
         <Breadcrumb
           style={{ margin: "16px 0" }}
