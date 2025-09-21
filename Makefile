@@ -34,3 +34,33 @@ switch-to-mise:
 .PHONY: build
 build:
 	mise run build
+
+# TODO: make sure dependencies like ffmpeg are installed via brew
+.PHONY: setup_lolcommits
+setup_lolcommits:
+	brew install imagemagick ffmpeg
+	gem install lolcommits
+	lolcommits --enable --delay 1 --animate 6 --fork
+
+.PHONY: disable_lolcommits
+disable_lolcommits:
+	lolcommits --disable
+
+.PHONY: last_lol
+last_lol:
+	stat -f "%m%t%Sm %N" ~/.lolcommits/**/*.gif | \
+		sort -rn | head -1 | cut -f2- | \
+		sed "s/.*20[0-9][0-9] //" | \
+		sed "s/^/<img style=\"width:70%;\" src=\"/" | \
+		sed "s/.*/&\">/" > \
+		${HOME}/temp_single_lolcommitters.html && \
+		open ${HOME}/temp_single_lolcommitters.html
+
+.PHONY: all_the_lols
+all_the_lols:
+	ls -t ~/.lolcommits/**/*.gif | \
+		sed "s/^/<img src=\"/" | \
+		sed "s/.*/&\">/" > \
+		${HOME}/temp_lolcommitters.html && \
+		open ${HOME}/temp_lolcommitters.html
+
