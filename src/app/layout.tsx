@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import "@ant-design/v5-patch-for-react-19";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider } from "antd";
+import GaolnicalTheme from "@/theme/GalonicalTheme";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AntdRegistry>
+          <ConfigProvider theme={GaolnicalTheme}>{children}</ConfigProvider>
+        </AntdRegistry>
+      </body>
     </html>
   );
 }
