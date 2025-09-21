@@ -1,2 +1,32 @@
+[tasks.check]
+description = "check environment readiness"
+run = [
+  "echo 'Checking Node.js version...'",
+  "node --version",
+  """
+  node -e "const v = process.version.slice(1).split('.')[0]; \
+    if (parseInt(v) < 22) { \
+      console.error('❌ Node.js version 22+ required, found v' + process.version); \
+      process.exit(1); \
+    } \
+    else { console.log('✅ Node.js version check passed'); }"
+  """,
+]
+
+[tasks.install]
+description = "install all dependencies"
+run = "npm install"
+
+[tasks.build]
+description = "build all the things"
+depends = [
+  "check",
+  "install",
+]
+run = [
+  "npm run lint",
+  "npm run build",
+]
+
 [tools]
 node = "22.5.1"
